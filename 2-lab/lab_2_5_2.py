@@ -4,7 +4,7 @@ def main():
     ext = input("Enter the file extension: ")
     count = 0
 
-    for root, dirs, files in os.walk('./example'):
+    for root, dirs, files in os.walk('./resources/example'):
         for file in files:
             _, file_extension = os.path.splitext(file)
             if file_extension == ext:
