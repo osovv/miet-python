@@ -9,18 +9,18 @@ def main():
     with open(SOURCE,"r") as source:
         reader = csv.DictReader(source, delimiter=";")
         for row in reader:
-            category = row['Категория']
+            category = row['Category']
             if not category in data:
                 data[category] = 0
-            data[category] =+ float(row['Стоимость'])
+            data[category] =+ float(row['Price'])
 
 
     categories = []
     for category, price in data.items():
-            categories.append({'Категория': category,'Стоимость': price })
+            categories.append({'Category': category,'Price': price })
 
     with open(OUTPUT, 'w', newline="") as output:
-        fieldnames = ["Категория", "Стоимость"]
+        fieldnames = ["Category", "Price"]
         writer = csv.DictWriter(output, fieldnames=fieldnames, delimiter=";")
         writer.writeheader()
         writer.writerows(categories)
