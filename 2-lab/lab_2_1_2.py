@@ -11,7 +11,7 @@ def main():
             for j in range(255, -1, -1):
                 for k in range(255, -1, -1):
                     for z in range(255, -1, -1):
-                        file.write(f"{f(i)}.{f(j)}.{f(k)}.{f(z)}")
+                        file.write(f"{f(i)}.{f(j)}.{f(k)}.{f(z)}\n")
 
 
 
