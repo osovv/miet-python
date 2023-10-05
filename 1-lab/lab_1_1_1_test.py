@@ -8,3 +8,6 @@ def test_example_2():
 
 def test_example_3():
     assert remove_virus('Queues', 'ue') == 'Qs'
+
+def test_example_4():
+    assert remove_virus('aaaabbb', 'ab') == 'a'
