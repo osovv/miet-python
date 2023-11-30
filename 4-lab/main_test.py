@@ -9,6 +9,11 @@ class TestVehicleManagementSystem(unittest.TestCase):
     def setUp(self):
         self.bus = Bus()
         self.car = PassengerCar()
+        self.filename = "test_vehicles.dat"
+
+    def tearDown(self):
+        if os.path.exists(self.filename):
+            os.remove(self.filename)
 
     def test_bus_refuel(self):
         self.bus.refuel(50)
@@ -24,13 +29,11 @@ class TestVehicleManagementSystem(unittest.TestCase):
 
     def test_save_and_load_data(self):
         test_data = {"bus": self.bus, "car": self.car}
-        filename = "test_vehicles.dat"
-        save_data_to_file(test_data, filename)
-        self.assertTrue(os.path.exists(filename))
-        loaded_data = load_data_from_file(filename)
+        save_data_to_file(test_data, self.filename)
+        self.assertTrue(os.path.exists(self.filename))
+        loaded_data = load_data_from_file(self.filename)
         self.assertEqual(loaded_data["bus"].gas_tank.level, self.bus.gas_tank.level)
         self.assertEqual(loaded_data["car"].gas_tank.level, self.car.gas_tank.level)
-        os.remove(filename)
 
 
 if __name__ == '__main__':
